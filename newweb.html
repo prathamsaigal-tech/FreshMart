@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>FreshMart</title>
+
+    <style>
+      * {
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: white;
+      }
+
+      .navbar {
+        height: 58px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 45px;
+        border-bottom: 1px solid #ddd;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        background-color: white;
+        z-index: 1000;
+      }
+      main {
+        padding: 70px 0;
+      }
+
+      .logo {
+        font-size: 20px;
+        font-weight: bold;
+        color: green;
+      }
+
+      .search {
+        display: flex;
+        justify-content: center;
+      }
+
+      .search input {
+        width: 490px;
+        height: 38px;
+        padding: 0 14px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        outline: none;
+        font-size: 12px;
+      }
+
+      .links {
+        display: flex;
+        gap: 55px;
+      }
+
+      .links a {
+        text-decoration: none;
+        color: black;
+        font-size: 14px;
+      }
+
+      .links a:hover {
+        color: green;
+      }
+      .hero {
+        height: 40vh;
+        /* border:1px solid black; */
+        background: linear-gradient(to right, #3d973d, #7ec796);
+        border-radius: 20px;
+        margin: 0 60px;
+        padding: 50px;
+        justify-content: space-between;
+        display: flex;
+      }
+      .hero h1 {
+        color: white;
+        font-size: 30px;
+        margin-bottom: 20px;
+      }
+      .hero p {
+        color: white;
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+      .hero button {
+        background-color: green;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+      }
+      .hero button:hover {
+        background-color: white;
+        color: green;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+      }
+
+      .cart {
+        height: auto;
+      }
+      .mid {
+        padding: 20px 60px;
+        position: sticky;
+        top: 58px;
+        z-index: 10000;
+        background-color: white;
+      }
+      .mid h2 {
+        padding-bottom: 20px;
+      }
+      .c {
+        display: flex;
+        gap: 35px;
+        align-items: center;
+      }
+      .cat-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .categories {
+        border-radius: 50%;
+        height: 90px;
+        width: 90px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        background: linear-gradient(to right, #3d973d, #7ec796);
+        cursor: pointer;
+      }
+      .categories:hover {
+        transform: scale(1.1);
+      }
+      .pop {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        position: sticky;
+        /* padding: 20px;
+        margin: 20px 60px; */ 
+      }
+      .box {
+        height: 220px;
+        border: 1px solid black;
+        justify-content: space-between;
+        padding: 20px;
+        margin: 20px 60px;
+        background-color: white;
+        border-radius: 10px;
+      }
+      .pop-cont {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        gap: 10px;
+      }
+      .pop-cat {
+        height: 170px;
+        width: 150px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        cursor: pointer;
+        border-radius: 10px;
+        background: rgb(196, 182, 182);
+        position: relative;
+      }
+      .mid2 {
+        padding: 20px 60px;
+        position: sticky;
+        top: 60px;
+      }
+      .mid2 h1 {
+        padding-bottom: 20px;
+      }
+      footer {
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        color: white;
+      }
+      .pop-cat label {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background-color: red;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+      @media (max-width: 600px) {
+        .navbar {
+          border: 2px solid red;
+          display: grid;
+          height: auto;
+          grid-template-areas:
+            "logo navItems"
+            "input input";
+
+          padding: 10px;
+        }
+        .logo {
+          grid-area: logo;
+        }
+        .links {
+          grid-area: navItems;
+          /* border: 2px solid black; */
+          width: 100%;
+          gap: 10px;
+        }
+        .search {
+          grid-area: input;
+          width: 100%;
+        }
+        .hero {
+          height: 70vh;
+          background: linear-gradient(to right, #3d973d, #7ec796);
+          border-radius: 20px;
+          margin: 5px;
+          padding: 50px;
+          justify-content: space-between;
+          display: grid;
+        }
+        .hero h1 {
+          color: black;
+          font-weight: bold;
+          font-size: 30px;
+          margin-bottom: 10px;
+        }
+        .hero p {
+          color: white;
+          font-size: 20px;
+          margin-bottom: 20px;
+        }
+        .cart {
+          height: auto;
+          align-items: center;
+          justify-content: center;
+          display: flex;
+        }
+        .mid {
+          padding: 0 5px;
+          position: sticky;
+          top: 58px;
+          z-index: 10000;
+          background-color: white;
+        }
+        .mid h2 {
+          padding-bottom: 20px;
+        }
+        .c {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          overflow: scroll;
+        }
+        .mid2 {
+          padding: 0 5px;
+          position: sticky;
+          top: 60px;
+        }
+        .mid2 h1 {
+          padding-bottom: 0px;
+        }
+        .box {
+          border: 1px solid black;
+          justify-content: space-between;
+          padding: 20px;
+          background-color: white;
+          border-radius: 10px;
+        }
+        .pop {
+          display: flex;
+          flex-direction: column;
+          position: sticky;
+          .pop-cat {
+            height: 180px;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            cursor: pointer;
+            border-radius: 10px;
+            background: rgb(196, 182, 182);
+          }
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="logo">FreshMart</div>
+
+      <div class="search">
+        <input type="text" placeholder="Search fruits, vegetables..." />
+      </div>
+
+      <div class="links">
+        <li>Home</li>
+        <li>Products</li>
+        <li>Cart</li>
+      </div>
+    </nav>
+    <main>
+      <div class="hero">
+        <div class="hero-content">
+          <h1>Fresh groceries<br />delivered to your door.</h1>
+          <p>
+            Get fresh fruits and vegetables delivered to your home with just a
+            few clicks.
+          </p>
+          <button>Shop Now</button>
+        </div>
+        <div class="cart">
+          <p style="font-size: 100px">🛒</p>
+        </div>
+      </div>
+      <div class="mid">
+        <h2>Shop by category</h2>
+        <div class="c">
+          <div class="cat-container">
+            <div class="categories">
+              <p style="font-size: 50px">🍎</p>
+            </div>
+            <div>Fruits</div>
+          </div>
+          <div class="cat-container">
+            <div class="categories">
+              <p style="font-size: 50px">🥦</p>
+            </div>
+            <div>Vegetables</div>
+          </div>
+          <div class="cat-container">
+            <div class="categories">
+              <p style="font-size: 50px">🧈</p>
+            </div>
+            <div>Dairy</div>
+          </div>
+          <div class="cat-container">
+            <div class="categories">
+              <p style="font-size: 50px">🍞</p>
+            </div>
+            <div>Bakery</div>
+          </div>
+          <div class="cat-container">
+            <div class="categories">
+              <p style="font-size: 50px">🍺</p>
+            </div>
+            <div>Drinks</div>
+          </div>
+        </div>
+      </div>
+      <div class="mid2">
+        <h1 style="padding: 10px 10px">Popular Items</h1>
+        <div class="pop">
+          <div class="box">
+            <div class="pop-cont">
+              <div class="pop-cat">
+                <p style="font-size: 70px">🍎</p>
+                <label> New </label>
+              </div>
+              <div>Fresh Apples<br />$1.99</div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="pop-cont">
+              <div class="pop-cat">
+                <p style="font-size: 70px">🥦</p>
+                <label> 20% off</label>
+              </div>
+              <div>Fresh Broccoli<br />$2.49</div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="pop-cont">
+              <div class="pop-cat">
+                <p style="font-size: 70px">🥛</p>
+              </div>
+              <div>Fresh Milk<br />$3.99</div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="pop-cont">
+              <div class="pop-cat">
+                <p style="font-size: 70px">🍞</p>
+              </div>
+              <div>Brown Bread<br />$2.99</div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="pop-cont">
+              <div class="pop-cat">
+                <p style="font-size: 70px">🍊</p>
+              </div>
+              <div>Fresh Oranges<br />$1.49</div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="pop-cont">
+              <div class="pop-cat">
+                <p style="font-size: 70px">🍌</p>
+              </div>
+              <div>Bananas<br />$0.99</div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="pop-cont">
+              <div class="pop-cat">
+                <p style="font-size: 70px">🍅</p>
+              </div>
+              <div>Fresh Tomatoes<br />$2.99</div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="pop-cont">
+              <div class="pop-cat">
+                <p style="font-size: 70px">🛢️</p>
+              </div>
+              <div>Cooking Oil<br />$4.99</div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="pop-cont">
+              <div class="pop-cat">
+                <p style="font-size: 70px">🥤</p>
+              </div>
+              <div>Cold Drink<br />$2.99</div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="pop-cont">
+              <div class="pop-cat">
+                <p style="font-size: 70px">🧃</p>
+              </div>
+              <div>Fresh Juice<br />$3.49</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>FreshMart © 2026 | CSS Position Practice</p>
+    </footer>
+  </body>
+</html>
